@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { User } from './user';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'my-app',
+  providers: [ UserService ],
   template: `
     <h1>{{title}}</h1>
     <h2>Users:</h2><button (click)="showUsers()">Show Users</button>
@@ -70,9 +72,19 @@ import { User } from './user';
 })
 export class AppComponent {
   title = 'Twitter users';
-  users = USERS;
+  users: User[];
 
   selectedUser: User;
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers() {
+    this.users = this.userService.getUsers();
+  }
 
   onSelect(user) {
     this.selectedUser = user;
@@ -82,9 +94,3 @@ export class AppComponent {
     console.table(this.users);
   }
 }
-
-const USERS: User[] = [
-  {id: 1, username:'victorilloleon'},
-  {id: 2, username:'diegofd'},
-  {id: 3, username:'gsanmel'},
-];
