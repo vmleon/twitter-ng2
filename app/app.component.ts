@@ -82,8 +82,8 @@ export class AppComponent {
     this.getUsers();
   }
 
-  getUsers() {
-    this.users = this.userService.getUsers();
+  getUsers(): void {
+    this.userService.getUsers().then(users => this.users = users);
   }
 
   onSelect(user) {
