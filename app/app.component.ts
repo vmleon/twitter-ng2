@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { User } from './user';
+
 @Component({
   selector: 'my-app',
   template: `
@@ -14,15 +16,7 @@ import { Component } from '@angular/core';
         {{user.username}}
       </li>
     </ul>
-
-    <div *ngIf="selectedUser">
-      <h2>{{selectedUser.username}} details</h2>
-      <div><label>id: </label>{{selectedUser.id}}</div>
-      <div>
-          <label>User name: </label>
-          <input [(ngModel)]="selectedUser.username" placeholder="victorilloleon"/>
-      </div>
-    </div>
+    <user-detail [user]="selectedUser"></user-detail>
     `,
     styles: [`
       .selected {
@@ -87,11 +81,6 @@ export class AppComponent {
   showUsers() {
     console.table(this.users);
   }
-}
-
-export class User {
-  id: number;
-  username: string;
 }
 
 const USERS: User[] = [
