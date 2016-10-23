@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { UsersComponent } from './users.component';
-import { UserDetailComponent } from './user-detail.component';
+import { UsersComponent } from './user/users.component';
+import { UserDetailComponent } from './user/user-detail.component';
 
-import { UserService } from './user.service';
+import { UserService } from './user/user.service';
 
 @NgModule({
   imports:      [
