@@ -4,21 +4,10 @@ import { User } from './user';
 import { UserService } from './user.service';
 
 @Component({
+  moduleId: module.id,
   selector: 'users',
   providers: [ UserService ],
-  template: `
-    <h2>Users:</h2><button (click)="showUsers()">Show Users</button>
-    <ul class="users">
-      <li
-        *ngFor="let user of users"
-        (click)="onSelect(user)"
-        [class.selected]="user === selectedUser">
-        <span class="badge">{{user.id}}</span>
-        {{user.username}}
-      </li>
-    </ul>
-    <user-detail [user]="selectedUser"></user-detail>
-    `,
+  templateUrl: 'users.component.html',
     styles: [`
       .selected {
         background-color: #CFD8DC !important;

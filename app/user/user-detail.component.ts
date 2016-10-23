@@ -3,17 +3,9 @@ import { Component, Input } from '@angular/core';
 import { User } from './user';
 
 @Component({
+  moduleId: module.id,
   selector: 'user-detail',
-  template: `
-    <div *ngIf="user">
-      <h2>{{user.username}} details</h2>
-      <div><label>id: </label>{{user.id}}</div>
-      <div>
-          <label>User name: </label>
-          <input [(ngModel)]="user.username" placeholder="victorilloleon"/>
-      </div>
-    </div>
-  `
+  templateUrl: 'user-detail.component.html'
 })
 export class UserDetailComponent {
   @Input()
